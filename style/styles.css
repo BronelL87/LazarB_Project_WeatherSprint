@@ -1,0 +1,13 @@
+
+body{
+    background-image: url('../assets/daybgclear.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.WCBG{
+    width: 38.313rem;
+    height:48.563rem ;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: white;
+}
