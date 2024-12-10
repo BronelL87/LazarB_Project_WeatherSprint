@@ -8,6 +8,8 @@
 
 **Day 1**: Not too much progress, focused more time in preparing myself for the evaluation. Started the layout on the html side, fetched api data for 5 day forecast.
 
+**Day 2**: Will need to put in some work at home, project presentations took a little while. added another box in the html to prepare the local storage side, will work on the logic at home.
+
 ### Peer Review
 
 **Reviewer**: 
