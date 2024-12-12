@@ -10,6 +10,8 @@
 
 **Day 2**: Will need to put in some work at home, project presentations took a little while. added another box in the html to prepare the local storage side, will work on the logic at home.
 
+**Day 3**: Progressed on logic, needs adjustments for overall weather forecast display, search functionality coming along, set up localStorage for the user's saved locations and recent searches
+
 ### Peer Review
 
 **Reviewer**: 
