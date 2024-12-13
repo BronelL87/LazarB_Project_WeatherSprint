@@ -20,7 +20,7 @@
 
 ### Peer Review
 
-**Reviewer**: 
+**Reviewer**: Charles Orr
 
 
-**Reviewer Notes**: 
+**Reviewer Notes**: I recommend using "cursor: pointer;" on your buttons just to help users see that they are buttons
