@@ -16,6 +16,26 @@ let lowTemp =  document.getElementById('lowTemp');
 let recentSearchesList = document.getElementById('recentSearches');
 let favoriteCitiesList = document.getElementById('favoriteCities');
 let addFavoriteBtn = document.getElementById('addFavoriteBtn');
+let day1Fore = document.getElementById("day1Fore");
+let day1High = document.getElementById("day1High");
+let day1Low = document.getElementById("day1Low");
+
+let day2Fore = document.getElementById("day2Fore");
+let day2High = document.getElementById("day2High");
+let day2Low = document.getElementById("day2Low");
+
+let day3Fore = document.getElementById("day3Fore");
+let day3High = document.getElementById("day3High");
+let day3Low = document.getElementById("day3Low");
+
+let day4Fore = document.getElementById("day4Fore");
+let day4High = document.getElementById("day4High");
+let day4Low = document.getElementById("day4Low");
+
+let day5Fore = document.getElementById("day5Fore");
+let day5High = document.getElementById("day5High");
+let day5Low = document.getElementById("day5Low");
+
 
 
 navigator.geolocation.getCurrentPosition(successCall, errorCall);
@@ -65,8 +85,7 @@ searchBtn.addEventListener("click", () => {
 
 function kelvinToFahrenheit(kelvin) {
     return ((kelvin - 273.15) * 9) / 5 + 32;
-}
-
+  }
 
 function getWeather(weatherData) {
     console.log( weatherData);
@@ -76,21 +95,59 @@ function getWeather(weatherData) {
 
     findLocation.textContent = `${city}, ${state}`;
 
-    theTime.textContent = `${new Date().toLocaleTimeString()}`;
+ theTime.textContent = `${new Date().toLocaleTimeString()}`;
+   
     theDate.textContent = ` - ${new Date().toLocaleDateString()}`;
 
     const currentWeather = weatherData.list[0];
-    const temp = kelvinToFahrenheit(currentWeather.main.temp).toFixed();
-    const tempMax = kelvinToFahrenheit(currentWeather.main.temp_max).toFixed();
+    const temp = kelvinToFahrenheit(currentWeather.main.temp).toFixed(0);
+    const tempMax = kelvinToFahrenheit(currentWeather.main.temp_max).toFixed(0);
     const tempMin = kelvinToFahrenheit(currentWeather.main.temp_min).toFixed(0);
+
+    const humidity = currentWeather.main.humidity;
+    const windSpeed = currentWeather.wind.speed;
+    const precipitation = currentWeather.pop * 100;
 
     currentTemp.textContent = `${temp}°F`;
     highTemp.textContent = `High: ${tempMax}°F`;
     lowTemp.textContent = `Low: ${tempMin}°F`;
+    humidStat.textContent = `Humidity: ${humidity}%`;
+    windStat.textContent = `Wind: ${windSpeed} mph`;
+    precipStat.textContent = `Precipitation: ${precipitation.toFixed(0)}%`;
 
+    const dailyForecasts = weatherData.list.filter((item, index) => index % 8 === 0);
 
-    updateFavorites()
+if (dailyForecasts.length >= 5) {
+    const forecast1 = dailyForecasts[0];
+    day1Fore.textContent = new Date(forecast1.dt * 1000).toLocaleDateString("en-US", { weekday: "long" });
+    day1High.textContent = `High: ${kelvinToFahrenheit(forecast1.main.temp_max).toFixed(0)}°F`;
+    day1Low.textContent = `Low: ${kelvinToFahrenheit(forecast1.main.temp_min).toFixed(0)}°F`;
+
+    const forecast2 = dailyForecasts[1];
+    day2Fore.textContent = new Date(forecast2.dt * 1000).toLocaleDateString("en-US", { weekday: "long" });
+    day2High.textContent = `High: ${kelvinToFahrenheit(forecast2.main.temp_max).toFixed(0)}°F`;
+    day2Low.textContent = `Low: ${kelvinToFahrenheit(forecast2.main.temp_min).toFixed(0)}°F`;
+
+    const forecast3 = dailyForecasts[2];
+    day3Fore.textContent = new Date(forecast3.dt * 1000).toLocaleDateString("en-US", { weekday: "long" });
+    day3High.textContent = `High: ${kelvinToFahrenheit(forecast3.main.temp_max).toFixed(0)}°F`;
+    day3Low.textContent = `Low: ${kelvinToFahrenheit(forecast3.main.temp_min).toFixed(0)}°F`;
+
+    const forecast4 = dailyForecasts[3];
+    day4Fore.textContent = new Date(forecast4.dt * 1000).toLocaleDateString("en-US", { weekday: "long" });
+    day4High.textContent = `High: ${kelvinToFahrenheit(forecast4.main.temp_max).toFixed(0)}°F`;
+    day4Low.textContent = `Low: ${kelvinToFahrenheit(forecast4.main.temp_min).toFixed(0)}°F`;
+
+    const forecast5 = dailyForecasts[4];
+    day5Fore.textContent = new Date(forecast5.dt * 1000).toLocaleDateString("en-US", { weekday: "long" });
+    day5High.textContent = `High: ${kelvinToFahrenheit(forecast5.main.temp_max).toFixed(0)}°F`;
+    day5Low.textContent = `Low: ${kelvinToFahrenheit(forecast5.main.temp_min).toFixed(0)}°F`;
+
+    
 }
+}
+
+
 
 function updateRecentSearches() {
     let recentCities = getRecentSearches();
