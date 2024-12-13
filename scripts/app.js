@@ -44,6 +44,7 @@ async function fetchCityDetails(city) {
     let geoData = await response.json();
 
     if (geoData && geoData.length > 0) {
+        const location = geoData[0];
         fetchWeatherByCoords(location.lat, location.lon);
         saveRecentSearch(city);
         updateRecentSearches();
@@ -92,22 +93,24 @@ function getWeather(weatherData) {
 }
 
 function updateRecentSearches() {
-    const recentCities = getRecentSearches();
+    let recentCities = getRecentSearches();
     if (recentSearchesList) {
         recentSearchesList.innerHTML = ""; 
         
         recentCities.forEach((city) => {
-            const li = document.createElement("li");
-            li.textContent = city;
-            li.addEventListener("click", () => fetchCityDetails(city));
+            let listElement = document.createElement("li");
+            listElement.textContent = city;
+            listElement.addEventListener("click", () => fetchCityDetails(city));
             recentSearchesList.appendChild(li);
         });
+    }else{
+        console.log("No recents")
     }
 }
 
 
 function updateFavorites() {
-    const favoriteCities = getFavoriteCities();
+    let favoriteCities = getFavoriteCities();
     if (favoriteCitiesList) {
         favoriteCitiesList.innerHTML = "";
         
@@ -126,6 +129,8 @@ function updateFavorites() {
             li.appendChild(removeBtn);
             favoriteCitiesList.appendChild(li);
         });
+    }else{
+        console.log("No favorites")
     }
 }
 
@@ -136,7 +141,7 @@ function addCityToFavorites(city) {
 }
 
 addFavoriteBtn.addEventListener('click', () => {
-    let city = findLocation.textContent.split(",")[0].trim();
+    let city = findLocation.textContent.split(",")[0]
     if (city) {
         addCityToFavorites(city);
     }
