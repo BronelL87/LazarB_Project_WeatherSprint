@@ -23,4 +23,4 @@
 **Reviewer**: Charles Orr
 
 
-**Reviewer Notes**: I recommend using "cursor: pointer;" on your buttons just to help users see that they are buttons
+**Reviewer Notes**: I recommend using "cursor: pointer;" on your buttons just to help users see that they are buttons, i really like the look of your website and i think your doing a very good job
