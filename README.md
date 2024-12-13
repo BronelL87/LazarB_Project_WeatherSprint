@@ -12,6 +12,8 @@
 
 **Day 3**: Progressed on logic, needs adjustments for overall weather forecast display, search functionality coming along, set up localStorage for the user's saved locations and recent searches
 
+**Day 4**: Reverted my .then() methods back to async functions ( was only switched to .then() for troubleshooting purposes since it helped me visualize the flow better ) 
+
 ### Peer Review
 
 **Reviewer**: 
